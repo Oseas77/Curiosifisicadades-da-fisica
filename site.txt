@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curiosidades da Física</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #0073e6;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #005bb5;
+            padding: 0.5rem 0;
+        }
+        nav a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        section {
+            margin-bottom: 2rem;
+        }
+        h2 {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: #0073e6;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background-color: #0073e6;
+            color: white;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        form input, form textarea {
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        form button {
+            padding: 0.5rem;
+            border: none;
+            background-color: #005bb5;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        form button:hover {
+            background-color: #003f8a;
+        }
+        .rss-feed {
+            list-style-type: none;
+            padding: 0;
+        }
+        .rss-feed li {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.rawgit.com/sdepold/jquery-rss/master/dist/jquery.rss.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Curiosidades da Física</h1>
+    </header>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#gravitation">Gravitação</a>
+        <a href="#electromagnetism">Eletromagnetismo</a>
+        <a href="#relativity">Teoria da Relatividade</a>
+        <a href="#contact">Contato</a>
+        <a href="#news">Notícias</a>
+    </nav>
+    <main>
+        <section id="home">
+            <h2>Bem-vindo ao Curiosidades da Física</h2>
+            <p>Olá, eu sou Oseas dos Reis Teixeira, Professor de Física. Descubra fatos fascinantes sobre o universo da Física. Explore diferentes tópicos e aprenda algo novo hoje!</p>
+        </section>
+        <section id="gravitation">
+            <h2>Gravitação</h2>
+            <ul>
+                <li>A Lua está se afastando da Terra a uma taxa de cerca de 3,8 cm por ano.</li>
+                <li>A força de gravidade na superfície de Marte é cerca de 38% da gravidade na Terra.</li>
+                <li>O primeiro satélite artificial, Sputnik 1, foi lançado pela União Soviética em 1957.</li>
+            </ul>
+        </section>
+        <section id="electromagnetism">
+            <h2>Eletromagnetismo</h2>
+            <ul>
+                <li>A velocidade da luz no vácuo é aproximadamente 299.792 km/s.</li>
+                <li>Os ímãs sempre têm dois polos, mesmo quando cortados ao meio.</li>
+                <li>O campo magnético da Terra protege o planeta dos ventos solares.</li>
+            </ul>
+        </section>
+        <section id="relativity">
+            <h2>Teoria da Relatividade</h2>
+            <ul>
+                <li>De acordo com a Teoria da Relatividade de Einstein, o tempo passa mais devagar em velocidades próximas à da luz.</li>
+                <li>A famosa equação \( E = mc^2 \) mostra que massa e energia são intercambiáveis.</li>
+                <li>Os buracos negros foram previstos pela teoria da relatividade geral antes de serem observados.</li>
+            </ul>
+        </section>
+        <section id="news">
+            <h2>Notícias Recentes</h2>
+            <ul class="rss-feed"></ul>
+        </section>
+        <section id="contact">
+            <h2>Contato</h2>
+            <form action="https://formspree.io/f/xzbqwabb" method="POST">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="_replyto" required>
+                <label for="message">Mensagem:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Curiosidades da Física. Todos os direitos reservados.</p>
+    </footer>
+    <script>
+        $(document).ready(function() {
+            $(".rss-feed").rss("https://rss.sciencedaily.com/top/science.xml", {
+                limit: 5,
+                layoutTemplate: "<ul>{entries}</ul>",
+                entryTemplate: "<li><a href='{url}' target='_blank'>{title}</a><br>{shortBodyPlain}</li>"
+            });
+        });
+    </script>
+</body>
+</html>
